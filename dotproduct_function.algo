@@ -1,0 +1,51 @@
+
+FUNCTION DimensionVecteur() : INTEGER
+VAR
+    n:INTEGER;
+BEGIN
+    REPEAT
+        write("enter la dimenson des vecteurs")
+        read(n)
+    UNTIL (n>=0)
+
+    RETURN n ;
+END
+
+PROCEDURE SaisieVecteur(n:INTEGER,VAR T:ARRAY_OF INTEGER[])
+VAR
+    i:INTEGER;
+BEGIN
+    FOR i from 0 to n-1 STEP 1 DO
+    write("entrer les coordonnées du vecteur")
+    read(t[i])
+END
+
+FUNCTION DotProduct(n:INTEGER,t1,t2:ARRAY_OF INTEGER[]) : INTEGER
+VAR
+    i,p:INTEGER:=0;
+    
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+       p:=p+t1[i]*t2[i] ;
+    END_FOR
+    RETURN p ;
+END
+
+
+
+ALGORITHM Dot_product
+VAR
+    v1,v2:ARRAY_OF INTEGER[];
+    Dimension:INTEGER;
+    ps:INTEGER:=0;
+BEGIN
+    dimension:=DimensionVecteur();
+    SaisieVecteur(dimension,V1);
+    SaisieVecteur(dimension,V2);
+    ps:=DotProduct(Dimension,V1,V2);
+    IF (ps=0) THEN
+        write("les deux vecteurs sont orthogonaux")
+    ELSE
+        write("les deux vecteurs ne sont  pas orthogonaux")
+    END_IF
+END
